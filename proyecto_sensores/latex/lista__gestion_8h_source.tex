@@ -1,0 +1,94 @@
+\doxysection{lista\+\_\+gestion.\+h}
+\hypertarget{lista__gestion_8h_source}{}\label{lista__gestion_8h_source}\index{include/lista\_gestion.h@{include/lista\_gestion.h}}
+\mbox{\hyperlink{lista__gestion_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LISTA\_GESTION\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LISTA\_GESTION\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}sensor\_base.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structNodoSensor_ace2beaa5ec92d0563c1ec75eb9b2657b}{NodoSensor}}\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ SensorBase*\ \mbox{\hyperlink{structNodoSensor_ae0b68b437f590a4ba1a8c5996a41332d}{sensor}};}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{structNodoSensor_ace2beaa5ec92d0563c1ec75eb9b2657b}{NodoSensor}}*\ \mbox{\hyperlink{structNodoSensor_a2f74bd43191c5e37a31ab288737ac40d}{siguiente}};}
+\DoxyCodeLine{00012\ \ \ \ \ }
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{structNodoSensor_ace2beaa5ec92d0563c1ec75eb9b2657b}{NodoSensor}}(SensorBase*\ s)\ :\ \mbox{\hyperlink{structNodoSensor_ae0b68b437f590a4ba1a8c5996a41332d}{sensor}}(s),\ \mbox{\hyperlink{structNodoSensor_a2f74bd43191c5e37a31ab288737ac40d}{siguiente}}(nullptr)\ \{\}}
+\DoxyCodeLine{00014\ \};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classListaGestion_aceaec0bbb46bd0711387802d44e2dbee}{ListaGestion}}\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{structNodoSensor}{NodoSensor}}*\ cabeza;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classListaGestion_aceaec0bbb46bd0711387802d44e2dbee}{ListaGestion}}()\ :\ cabeza(nullptr)\ \{\}}
+\DoxyCodeLine{00025\ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{classListaGestion_a4b123bfc1cb872963fc3aac4ee797c1f}{\string~ListaGestion}}()\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n-\/-\/-\/\ Liberacion\ de\ Memoria\ en\ Cascada\ -\/-\/-\/"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNodoSensor}{NodoSensor}}*\ actual\ =\ cabeza;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (actual\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNodoSensor}{NodoSensor}}*\ siguiente\ =\ actual-\/>\mbox{\hyperlink{structNodoSensor_a2f74bd43191c5e37a31ab288737ac40d}{siguiente}};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}[Destructor\ General]\ Liberando\ Nodo:\ "{}}\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ actual-\/>\mbox{\hyperlink{structNodoSensor_ae0b68b437f590a4ba1a8c5996a41332d}{sensor}}-\/>getNombre()\ <<\ std::endl;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ actual-\/>\mbox{\hyperlink{structNodoSensor_ae0b68b437f590a4ba1a8c5996a41332d}{sensor}};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ actual;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ actual\ =\ siguiente;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Sistema\ cerrado.\ Memoria\ limpia."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classListaGestion_aeb20145c0e803b9ebf5f97ede1f3e270}{agregar}}(SensorBase*\ sensor)\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNodoSensor}{NodoSensor}}*\ nuevo\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{structNodoSensor}{NodoSensor}}(sensor);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cabeza\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ cabeza\ =\ nuevo;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNodoSensor}{NodoSensor}}*\ actual\ =\ cabeza;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (actual-\/>\mbox{\hyperlink{structNodoSensor_a2f74bd43191c5e37a31ab288737ac40d}{siguiente}}\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ actual\ =\ actual-\/>\mbox{\hyperlink{structNodoSensor_a2f74bd43191c5e37a31ab288737ac40d}{siguiente}};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ actual-\/>\mbox{\hyperlink{structNodoSensor_a2f74bd43191c5e37a31ab288737ac40d}{siguiente}}\ =\ nuevo;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ SensorBase*\ \mbox{\hyperlink{classListaGestion_abfeadbd9ed4b03aea28d9287ea5f5385}{buscar}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keywordtype}{id})\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNodoSensor}{NodoSensor}}*\ actual\ =\ cabeza;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (actual\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ nombre\ =\ actual-\/>\mbox{\hyperlink{structNodoSensor_ae0b68b437f590a4ba1a8c5996a41332d}{sensor}}-\/>getNombre();}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ igual\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ nombre[i]\ !=\ \textcolor{charliteral}{'\(\backslash\)0'}\ ||\ \textcolor{keywordtype}{id}[i]\ !=\ \textcolor{charliteral}{'\(\backslash\)0'};\ i++)\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nombre[i]\ !=\ \textcolor{keywordtype}{id}[i])\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ igual\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (igual)\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ actual-\/>\mbox{\hyperlink{structNodoSensor_ae0b68b437f590a4ba1a8c5996a41332d}{sensor}};}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ actual\ =\ actual-\/>\mbox{\hyperlink{structNodoSensor_a2f74bd43191c5e37a31ab288737ac40d}{siguiente}};}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00073\ \ \ \ \ \}}
+\DoxyCodeLine{00074\ \ \ \ \ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classListaGestion_a356ddce9e9524fe0a52412763a130a87}{procesarTodos}}()\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n-\/-\/-\/\ Ejecutando\ Polimorfismo\ -\/-\/-\/"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNodoSensor}{NodoSensor}}*\ actual\ =\ cabeza;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (actual\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ actual-\/>\mbox{\hyperlink{structNodoSensor_ae0b68b437f590a4ba1a8c5996a41332d}{sensor}}-\/>procesarLectura();}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ actual\ =\ actual-\/>\mbox{\hyperlink{structNodoSensor_a2f74bd43191c5e37a31ab288737ac40d}{siguiente}};}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \ \ \ \ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classListaGestion_a7b6fb7000cf8dc2763c5d85f38370d1b}{mostrarTodos}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n-\/-\/-\/\ Lista\ de\ Sensores\ -\/-\/-\/"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structNodoSensor}{NodoSensor}}*\ actual\ =\ cabeza;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (actual\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ actual-\/>\mbox{\hyperlink{structNodoSensor_ae0b68b437f590a4ba1a8c5996a41332d}{sensor}}-\/>imprimirInfo();}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ actual\ =\ actual-\/>\mbox{\hyperlink{structNodoSensor_a2f74bd43191c5e37a31ab288737ac40d}{siguiente}};}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
